@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Bing.WeChatWork.Robots.Models;
+﻿using Bing.WeChatWork.Robots.Models;
 using Xunit;
 using Xunit.Abstractions;
 

@@ -31,6 +31,11 @@
         public const string News = "news";
 
         /// <summary>
+        /// 文件
+        /// </summary>
+        public const string File = "file";
+
+        /// <summary>
         /// 全部人
         /// </summary>
         public const string All = "@all";
