@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Bing.WeChatWork.Robots.Models;
 
@@ -24,5 +25,12 @@ namespace Bing.WeChatWork.Robots
         /// <param name="request">请求</param>
         Task<WeChatWorkRobotResponse> SendAsync<TMessageRequest>(string appId, TMessageRequest request)
             where TMessageRequest : WeChatWorkRobotRequest;
+
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <param name="appId">企业微信机器人密钥</param>
+        /// <param name="file">文件路径</param>
+        Task<WeChatWorkRobotUploadResponse> UploadAsync(string appId, string file);
     }
 }

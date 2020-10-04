@@ -17,4 +17,10 @@
     <ProjectReference Include="..\..\src\Bing.WeChatWork.Robots\Bing.WeChatWork.Robots.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\T1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

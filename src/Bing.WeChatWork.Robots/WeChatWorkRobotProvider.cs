@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bing.WeChatWork.Robots.Models;
+using WebApiClient.Parameterables;
 
 namespace Bing.WeChatWork.Robots
 {
@@ -35,5 +36,13 @@ namespace Bing.WeChatWork.Robots
         /// <param name="appId">企业微信机器人密钥</param>
         /// <param name="request">请求</param>
         public async Task<WeChatWorkRobotResponse> SendAsync<TMessageRequest>(string appId, TMessageRequest request) where TMessageRequest : WeChatWorkRobotRequest => await _api.SendAsync(appId, request.ToRequestBody());
+
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <param name="appId">企业微信机器人密钥</param>
+        /// <param name="file">文件路径</param>
+        public async Task<WeChatWorkRobotUploadResponse> UploadAsync(string appId, string file) =>
+            await _api.UploadAsync(appId, new MulitpartFile(file));
     }
 }
