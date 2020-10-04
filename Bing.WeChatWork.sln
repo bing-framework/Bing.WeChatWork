@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bing.WeChatWork.Robots", "src\Bing.WeChatWork.Robots\Bing.WeChatWork.Robots.csproj", "{5FA9A0B3-A8AA-4174-A50D-1954FAF778A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bing.WeChatWork.Robots.Tests", "tests\Bing.WeChatWork.Robots.Tests\Bing.WeChatWork.Robots.Tests.csproj", "{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5FA9A0B3-A8AA-4174-A50D-1954FAF778A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FA9A0B3-A8AA-4174-A50D-1954FAF778A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FA9A0B3-A8AA-4174-A50D-1954FAF778A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
