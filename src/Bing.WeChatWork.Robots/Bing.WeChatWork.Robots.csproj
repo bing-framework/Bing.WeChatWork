@@ -1,12 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+  <Import Project="Bing.WeChatWork.Robots._shared.props"/>
 
-  <ItemGroup>
-    <PackageReference Include="WebApiClient.Extensions.DependencyInjection" Version="2.0.3" />
-    <PackageReference Include="WebApiClient.JIT" Version="1.1.4" />
-  </ItemGroup>
+  <Import Project="..\..\common.props"/>
 
 </Project>

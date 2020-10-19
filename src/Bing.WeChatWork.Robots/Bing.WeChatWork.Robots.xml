@@ -1,0 +1,496 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bing.WeChatWork.Robots</name>
+    </assembly>
+    <members>
+        <member name="T:Bing.WeChatWork.Robots.Const">
+            <summary>
+            常量
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.MsgType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.Markdown">
+            <summary>
+            Markdown
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.Image">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.News">
+            <summary>
+            图文
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.File">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.All">
+            <summary>
+            全部人
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Extensions">
+            <summary>
+            服务扩展 - 企业微信机器人
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Extensions.AddWeChatWorkRobot(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            注册企业微信机器人
+            </summary>
+            <param name="services">服务集合</param>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.IWeChatWorkRobotApi">
+            <summary>
+            企业微信机器人API
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotApi.SendAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            发送
+            </summary>
+            <param name="key">企业微信机器人密钥</param>
+            <param name="request">请求正文</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotApi.UploadAsync(System.String,WebApiClient.Parameterables.MulitpartFile,System.String)">
+            <summary>
+            上传
+            </summary>
+            <param name="key">企业微信机器人密钥</param>
+            <param name="file">上传文件</param>
+            <param name="type">类型</param>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.IWeChatWorkRobotProvider">
+            <summary>
+            企业微信机器人提供程序
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotProvider.SendAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            发送请求
+            </summary>
+            <param name="appId">企业微信机器人密钥</param>
+            <param name="request">请求</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotProvider.SendAsync``1(System.String,``0)">
+            <summary>
+            发送请求
+            </summary>
+            <typeparam name="TMessageRequest">消息请求类型</typeparam>
+            <param name="appId">企业微信机器人密钥</param>
+            <param name="request">请求</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotProvider.UploadAsync(System.String,System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="appId">企业微信机器人密钥</param>
+            <param name="file">文件路径</param>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.FileMessageRequest">
+            <summary>
+            文件消息请求
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.FileMessageRequest.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.FileMessageRequest.MediaId">
+            <summary>
+            文件id，通过下文的文件上传接口获取
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.FileMessageRequest.Validate">
+            <summary>
+            校验
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.ImageMessageRequest">
+            <summary>
+            图片消息请求
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.ImageMessageRequest.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.ImageMessageRequest.Base64">
+            <summary>
+            图片内容的base64编码
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.ImageMessageRequest.Md5">
+            <summary>
+            图片内容（base64编码前）的md5值
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.ImageMessageRequest.Validate">
+            <summary>
+            校验
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.MarkdownMessageRequest">
+            <summary>
+            Markdown消息请求
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.MarkdownMessageRequest.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.MarkdownMessageRequest.Content">
+            <summary>
+            markdown内容，最长不超过4096个字节，必须是utf8编码
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.MarkdownMessageRequest.Validate">
+            <summary>
+            校验
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.NewsMessageRequest">
+            <summary>
+            图文消息请求
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsMessageRequest.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsMessageRequest.Articles">
+            <summary>
+            文章列表
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.NewsMessageRequest.GetContent">
+            <summary>
+            获取内容
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.NewsMessageRequest.Validate">
+            <summary>
+            校验
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.NewsMessageRequest.Add(System.String,System.String,System.String,System.String)">
+            <summary>
+            添加
+            </summary>
+            <param name="title">标题</param>
+            <param name="description">描述</param>
+            <param name="url">链接</param>
+            <param name="picUrl">图片链接</param>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.NewsArticle">
+            <summary>
+            图文 - 文章
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsArticle.Title">
+            <summary>
+            标题，不超过128个字节，超过会自动截断
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsArticle.Description">
+            <summary>
+            描述，不超过512个字节，超过会自动截断
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsArticle.Url">
+            <summary>
+            点击后跳转的链接
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsArticle.PicUrl">
+            <summary>
+            图文消息的图片链接，支持JPG、PNG格式，较好的效果为大图 1068*455，小图150*150。
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.NewsArticle.#ctor">
+            <summary>
+            初始化一个<see cref="T:Bing.WeChatWork.Robots.Models.NewsArticle"/>类型的实例
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.NewsArticle.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            初始化一个<see cref="T:Bing.WeChatWork.Robots.Models.NewsArticle"/>类型的实例
+            </summary>
+            <param name="title">标题</param>
+            <param name="description">描述</param>
+            <param name="url">链接</param>
+            <param name="picUrl">图片链接</param>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TextMessageRequest">
+            <summary>
+            文本消息请求
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TextMessageRequest.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TextMessageRequest.Content">
+            <summary>
+            文本内容，最长不超过2048个字节，必须是utf8编码
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TextMessageRequest.Users">
+            <summary>
+            userid的列表，提醒群中的指定成员(@某个成员)，@all表示提醒所有人，如果开发者获取不到userid，可以使用mentioned_mobile_list
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TextMessageRequest.Phones">
+            <summary>
+            手机号列表，提醒手机号对应的群成员(@某个成员)，@all表示提醒所有人
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TextMessageRequest.Validate">
+            <summary>
+            校验
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TextMessageRequest.Add(System.String[])">
+            <summary>
+            添加
+            </summary>
+            <param name="mentions">要额外提及这些人。应该使用 企业微信Id 或者 手机号码，而不是姓名；可混合传入，会自动识别</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TextMessageRequest.AddPhone(System.String)">
+            <summary>
+            添加手机号
+            </summary>
+            <param name="phone">手机号</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TextMessageRequest.AddPhoneWithAll">
+            <summary>
+            添加所有手机号码接收
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TextMessageRequest.AddUser(System.String)">
+            <summary>
+            添加用户
+            </summary>
+            <param name="user">用户名</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TextMessageRequest.AddUserWithAll">
+            <summary>
+            添加所有用户接收
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest">
+            <summary>
+            企业微信机器人请求
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest.Params">
+            <summary>
+            参数字典
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest.#ctor">
+            <summary>
+            初始化一个<see cref="T:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest"/>类型的实例
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest.PreHandle">
+            <summary>
+            预处理
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest.GetContent">
+            <summary>
+            获取内容
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest.Validate">
+            <summary>
+            校验
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.WeChatWorkRobotRequest.ToRequestBody">
+            <summary>
+            转换为请求正文
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.WeChatWorkRobotResponse">
+            <summary>
+            企业微信机器人响应
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.WeChatWorkRobotResponse.Code">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.WeChatWorkRobotResponse.Message">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.WeChatWorkRobotResponse.Success">
+            <summary>
+            是否成功
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.WeChatWorkRobotUploadResponse">
+            <summary>
+            企业微信机器人上传响应
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.WeChatWorkRobotUploadResponse.Type">
+            <summary>
+            媒体文件类型，分别有图片（image）、语音（voice）、视频（video），普通文件(file)
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.WeChatWorkRobotUploadResponse.MediaId">
+            <summary>
+            媒体文件上传后获取的唯一标识，3天内有效
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.WeChatWorkRobotUploadResponse.CreatedAt">
+            <summary>
+            媒体文件上传时间戳
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder">
+            <summary>
+            企业微信Markdown构建器
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.Builder">
+            <summary>
+            内容拼接器
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.NewLine">
+            <summary>
+            换行
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendNormal(System.String)">
+            <summary>
+            自定义内容
+            </summary>
+            <param name="normal">内容</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendLevelTitle(System.String,System.Int32)">
+            <summary>
+            追加1-6级标题
+            </summary>
+            <param name="text">标题文本</param>
+            <param name="level">标题等级</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendBold(System.String)">
+            <summary>
+            加粗
+            </summary>
+            <param name="text">加粗文本</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendHref(System.String,System.String)">
+            <summary>
+            链接
+            </summary>
+            <param name="url">链接</param>
+            <param name="text">显示文本</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendLineCode(System.String)">
+            <summary>
+            行内代码
+            </summary>
+            <param name="text">代码文本</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendReference(System.String)">
+            <summary>
+            引用
+            </summary>
+            <param name="text">引用文本</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendInfoMsg(System.String)">
+            <summary>
+            绿色文字
+            </summary>
+            <param name="text">文本</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendCommentMsg(System.String)">
+            <summary>
+            灰色文字
+            </summary>
+            <param name="text">文字</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.AppendWarningMsg(System.String)">
+            <summary>
+            橙红色文字
+            </summary>
+            <param name="text">文字</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkMarkdownBuilder.ToString">
+            <summary>
+            输出字符串
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.WeChatWorkRobotProvider">
+            <summary>
+            企业微信机器人提供程序
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.WeChatWorkRobotProvider._api">
+            <summary>
+            企业微信机器人API
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkRobotProvider.#ctor(Bing.WeChatWork.Robots.IWeChatWorkRobotApi)">
+            <summary>
+            初始化一个<see cref="T:Bing.WeChatWork.Robots.WeChatWorkRobotProvider"/>类型的实例
+            </summary>
+            <param name="api">企业微信机器人API</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkRobotProvider.SendAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            发送请求
+            </summary>
+            <param name="appId">企业微信机器人密钥</param>
+            <param name="request">请求</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkRobotProvider.SendAsync``1(System.String,``0)">
+            <summary>
+            发送请求
+            </summary>
+            <typeparam name="TMessageRequest">消息请求类型</typeparam>
+            <param name="appId">企业微信机器人密钥</param>
+            <param name="request">请求</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkRobotProvider.UploadAsync(System.String,System.String)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="appId">企业微信机器人密钥</param>
+            <param name="file">文件路径</param>
+        </member>
+    </members>
+</doc>

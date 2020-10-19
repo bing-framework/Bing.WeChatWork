@@ -27,6 +27,14 @@ namespace Bing.WeChatWork.Robots.Tests
         /// </summary>
         protected string CurrentDir { get; }
 
+        /// <summary>
+        /// 是否已初始化
+        /// </summary>
+        private static bool _isInit = false;
+
+        /// <summary>
+        /// 初始化一个<see cref="WeChatWorkRobotProviderTest"/>类型的实例
+        /// </summary>
         public WeChatWorkRobotProviderTest(ITestOutputHelper output) : base(output)
         {
             Init();
@@ -41,10 +49,13 @@ namespace Bing.WeChatWork.Robots.Tests
         /// </summary>
         private void Init()
         {
+            if(_isInit)
+                return;
             HttpApi.Register<IWeChatWorkRobotApi>().ConfigureHttpApiConfig(c =>
             {
                 c.FormatOptions.IgnoreNullProperty = true;
             });
+            _isInit = true;
         }
 
         /// <summary>

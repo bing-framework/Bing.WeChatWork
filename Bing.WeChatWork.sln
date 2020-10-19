@@ -3,9 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bing.WeChatWork.Robots", "src\Bing.WeChatWork.Robots\Bing.WeChatWork.Robots.csproj", "{5FA9A0B3-A8AA-4174-A50D-1954FAF778A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bing.WeChatWork.Robots", "src\Bing.WeChatWork.Robots\Bing.WeChatWork.Robots.csproj", "{5FA9A0B3-A8AA-4174-A50D-1954FAF778A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bing.WeChatWork.Robots.Tests", "tests\Bing.WeChatWork.Robots.Tests\Bing.WeChatWork.Robots.Tests.csproj", "{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bing.WeChatWork.Robots.Tests", "tests\Bing.WeChatWork.Robots.Tests\Bing.WeChatWork.Robots.Tests.csproj", "{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SolutionItems", "_SolutionItems", "{2854D84F-1343-44CD-A9B2-5605E172890E}"
+	ProjectSection(SolutionItems) = preProject
+		common.props = common.props
+		Publish.bat = Publish.bat
+		README.md = README.md
+		version.props = version.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-src", "01-src", "{6859CD47-8842-4336-9C23-034959BF819E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-tests", "02-tests", "{240622B7-1F25-49DE-8B13-C08E99994CBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "asset", "asset", "{EB1C1E7D-0133-4298-978E-7F2BF7635502}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{DD1E4274-65E0-4C91-A0CE-4DDA859E7B91}"
+	ProjectSection(SolutionItems) = preProject
+		asset\props\misc.props = asset\props\misc.props
+		asset\props\package.props = asset\props\package.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5FA9A0B3-A8AA-4174-A50D-1954FAF778A1} = {6859CD47-8842-4336-9C23-034959BF819E}
+		{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77} = {240622B7-1F25-49DE-8B13-C08E99994CBE}
+		{EB1C1E7D-0133-4298-978E-7F2BF7635502} = {2854D84F-1343-44CD-A9B2-5605E172890E}
+		{DD1E4274-65E0-4C91-A0CE-4DDA859E7B91} = {EB1C1E7D-0133-4298-978E-7F2BF7635502}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF1F279B-8EAF-48A9-998D-56E08B58153A}
