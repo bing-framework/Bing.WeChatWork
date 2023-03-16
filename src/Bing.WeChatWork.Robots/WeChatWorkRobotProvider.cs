@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Bing.WeChatWork.Robots.Models;
-using WebApiClient.Parameterables;
+using WebApiClientCore.Parameters;
 
 namespace Bing.WeChatWork.Robots
 {
@@ -27,7 +28,9 @@ namespace Bing.WeChatWork.Robots
         /// </summary>
         /// <param name="appId">企业微信机器人密钥</param>
         /// <param name="request">请求</param>
-        public async Task<WeChatWorkRobotResponse> SendAsync(string appId, IDictionary<string, object> request) => await _api.SendAsync(appId, request);
+        /// <param name="cancellationToken">取消令牌</param>
+        public async Task<WeChatWorkRobotResponse> SendAsync(string appId, IDictionary<string, object> request, CancellationToken cancellationToken = default) => 
+            await _api.SendAsync(appId, request, cancellationToken);
 
         /// <summary>
         /// 发送请求
@@ -35,14 +38,18 @@ namespace Bing.WeChatWork.Robots
         /// <typeparam name="TMessageRequest">消息请求类型</typeparam>
         /// <param name="appId">企业微信机器人密钥</param>
         /// <param name="request">请求</param>
-        public async Task<WeChatWorkRobotResponse> SendAsync<TMessageRequest>(string appId, TMessageRequest request) where TMessageRequest : WeChatWorkRobotRequest => await _api.SendAsync(appId, request.ToRequestBody());
+        /// <param name="cancellationToken">取消令牌</param>
+        public async Task<WeChatWorkRobotResponse> SendAsync<TMessageRequest>(string appId, TMessageRequest request, CancellationToken cancellationToken = default)
+            where TMessageRequest : WeChatWorkRobotRequest =>
+            await _api.SendAsync(appId, request.ToRequestBody(), cancellationToken);
 
         /// <summary>
         /// 上传文件
         /// </summary>
         /// <param name="appId">企业微信机器人密钥</param>
         /// <param name="file">文件路径</param>
-        public async Task<WeChatWorkRobotUploadResponse> UploadAsync(string appId, string file) =>
-            await _api.UploadAsync(appId, new MulitpartFile(file));
+        /// <param name="cancellationToken">取消令牌</param>
+        public async Task<WeChatWorkRobotUploadResponse> UploadAsync(string appId, string file, CancellationToken cancellationToken = default) =>
+            await _api.UploadAsync(appId, new FormDataFile(file), cancellationToken: cancellationToken);
     }
 }

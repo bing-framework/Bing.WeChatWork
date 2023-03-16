@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30523.141
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bing.WeChatWork.Robots", "src\Bing.WeChatWork.Robots\Bing.WeChatWork.Robots.csproj", "{5FA9A0B3-A8AA-4174-A50D-1954FAF778A1}"
 EndProject
@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bing.WeChatWork.Robots.Test
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SolutionItems", "_SolutionItems", "{2854D84F-1343-44CD-A9B2-5605E172890E}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 		common.props = common.props
+		common.tests.props = common.tests.props
+		LICENSE = LICENSE
 		Publish.bat = Publish.bat
 		README.md = README.md
 		version.props = version.props
@@ -25,6 +30,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{DD1E4274
 	ProjectSection(SolutionItems) = preProject
 		asset\props\misc.props = asset\props\misc.props
 		asset\props\package.props = asset\props\package.props
+		asset\props\sourcelink.env.props = asset\props\sourcelink.env.props
+		asset\props\target.feature.props = asset\props\target.feature.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D7D2AAD6-ADF7-4309-99B5-3DC7392DD9AB}"
+	ProjectSection(SolutionItems) = preProject
+		asset\images\icon.png = asset\images\icon.png
 	EndProjectSection
 EndProject
 Global
@@ -50,6 +62,7 @@ Global
 		{A95DCE7E-A08D-45D7-B78C-223EF4BC3B77} = {240622B7-1F25-49DE-8B13-C08E99994CBE}
 		{EB1C1E7D-0133-4298-978E-7F2BF7635502} = {2854D84F-1343-44CD-A9B2-5605E172890E}
 		{DD1E4274-65E0-4C91-A0CE-4DDA859E7B91} = {EB1C1E7D-0133-4298-978E-7F2BF7635502}
+		{D7D2AAD6-ADF7-4309-99B5-3DC7392DD9AB} = {EB1C1E7D-0133-4298-978E-7F2BF7635502}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF1F279B-8EAF-48A9-998D-56E08B58153A}

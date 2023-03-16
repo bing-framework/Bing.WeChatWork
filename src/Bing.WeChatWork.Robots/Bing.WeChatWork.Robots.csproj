@@ -1,7 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Bing.WeChatWork.Robots</AssemblyName>
+    <PackageId>Bing.WeChatWork.Robots</PackageId>
+    <Description>Bing.WeChatWork.Robots是Bing应用框架的企业微信机器人操作类库。</Description>
+  </PropertyGroup>
 
-  <Import Project="Bing.WeChatWork.Robots._shared.props"/>
+  <Import Project="..\..\common.props" />
 
-  <Import Project="..\..\common.props"/>
+  <Import Project="dependency.props" />
 
 </Project>

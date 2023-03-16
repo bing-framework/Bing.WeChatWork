@@ -1,12 +1,15 @@
 ﻿using Bing.WeChatWork.Robots.Models;
+using Microsoft.Extensions.Logging;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Bing.WeChatWork.Robots.Tests.Models
 {
+    /// <summary>
+    /// Markdown消息测试
+    /// </summary>
     public class MarkdownMessageRequestTest : MessageRequestTest
     {
-        public MarkdownMessageRequestTest(ITestOutputHelper output) : base(output)
+        public MarkdownMessageRequestTest(ILoggerFactory loggerFactory) : base(loggerFactory)
         {
         }
 

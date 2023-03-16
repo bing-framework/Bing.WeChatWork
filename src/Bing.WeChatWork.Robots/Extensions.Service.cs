@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WebApiClient.Extensions.DependencyInjection;
 
 namespace Bing.WeChatWork.Robots
 {
@@ -14,9 +13,9 @@ namespace Bing.WeChatWork.Robots
         /// <param name="services">服务集合</param>
         public static void AddWeChatWorkRobot(this IServiceCollection services)
         {
-            services.AddHttpApi<IWeChatWorkRobotApi>().ConfigureHttpApiConfig(c =>
+            services.AddHttpApi<IWeChatWorkRobotApi>().ConfigureHttpApi(c =>
             {
-                c.FormatOptions.IgnoreNullProperty = true;
+                c.JsonSerializeOptions.IgnoreNullValues = true;
             });
             services.AddScoped<IWeChatWorkRobotProvider, WeChatWorkRobotProvider>();
         }

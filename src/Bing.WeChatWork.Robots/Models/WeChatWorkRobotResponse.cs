@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Bing.WeChatWork.Robots.Models
 {
@@ -11,13 +12,13 @@ namespace Bing.WeChatWork.Robots.Models
         /// <summary>
         /// 错误码
         /// </summary>
-        [DataMember(Name = "errcode")]
+        [JsonPropertyName("errcode")]
         public int Code { get; set; }
 
         /// <summary>
         /// 错误消息
         /// </summary>
-        [DataMember(Name = "errmsg")]
+        [JsonPropertyName("errmsg")]
         public string Message { get; set; }
 
         /// <summary>
@@ -35,19 +36,19 @@ namespace Bing.WeChatWork.Robots.Models
         /// <summary>
         /// 媒体文件类型，分别有图片（image）、语音（voice）、视频（video），普通文件(file)
         /// </summary>
-        [DataMember(Name = "type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// 媒体文件上传后获取的唯一标识，3天内有效
         /// </summary>
-        [DataMember(Name = "media_id")]
+        [JsonPropertyName("media_id")]
         public string MediaId { get; set; }
 
         /// <summary>
         /// 媒体文件上传时间戳
         /// </summary>
-        [DataMember(Name = "created_at")]
+        [JsonPropertyName("created_at")]
         public string CreatedAt { get; set; }
     }
 }

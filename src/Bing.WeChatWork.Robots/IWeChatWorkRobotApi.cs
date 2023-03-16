@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Bing.WeChatWork.Robots.Models;
-using WebApiClient;
-using WebApiClient.Attributes;
-using WebApiClient.Parameterables;
+using WebApiClientCore;
+using WebApiClientCore.Attributes;
+using WebApiClientCore.Parameters;
 
 namespace Bing.WeChatWork.Robots
 {
@@ -10,7 +12,7 @@ namespace Bing.WeChatWork.Robots
     /// 企业微信机器人API
     /// </summary>
     [HttpHost("https://qyapi.weixin.qq.com")]
-    [TraceFilter(OutputTarget = OutputTarget.LoggerFactory)]
+    [LoggingFilter]
     public interface IWeChatWorkRobotApi : IHttpApi
     {
         /// <summary>
@@ -18,8 +20,9 @@ namespace Bing.WeChatWork.Robots
         /// </summary>
         /// <param name="key">企业微信机器人密钥</param>
         /// <param name="request">请求正文</param>
+        /// <param name="cancellationToken">取消令牌</param>
         [HttpPost("cgi-bin/webhook/send")]
-        ITask<WeChatWorkRobotResponse> SendAsync([PathQuery] string key, [JsonContent] IDictionary<string, object> request);
+        Task<WeChatWorkRobotResponse> SendAsync([PathQuery] string key, [JsonContent] IDictionary<string, object> request, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 上传
@@ -27,7 +30,8 @@ namespace Bing.WeChatWork.Robots
         /// <param name="key">企业微信机器人密钥</param>
         /// <param name="file">上传文件</param>
         /// <param name="type">类型</param>
+        /// <param name="cancellationToken">取消令牌</param>
         [HttpPost("cgi-bin/webhook/upload_media")]
-        ITask<WeChatWorkRobotUploadResponse> UploadAsync([PathQuery] string key, MulitpartFile file, [PathQuery] string type = Const.File);
+        Task<WeChatWorkRobotUploadResponse> UploadAsync([PathQuery] string key, FormDataFile file, [PathQuery] string type = Const.File, CancellationToken cancellationToken = default);
     }
 }

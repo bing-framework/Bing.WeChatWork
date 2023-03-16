@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Bing.WeChatWork.Robots.Models;
 
@@ -15,7 +15,8 @@ namespace Bing.WeChatWork.Robots
         /// </summary>
         /// <param name="appId">企业微信机器人密钥</param>
         /// <param name="request">请求</param>
-        Task<WeChatWorkRobotResponse> SendAsync(string appId, IDictionary<string, object> request);
+        /// <param name="cancellationToken">取消令牌</param>
+        Task<WeChatWorkRobotResponse> SendAsync(string appId, IDictionary<string, object> request, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 发送请求
@@ -23,7 +24,8 @@ namespace Bing.WeChatWork.Robots
         /// <typeparam name="TMessageRequest">消息请求类型</typeparam>
         /// <param name="appId">企业微信机器人密钥</param>
         /// <param name="request">请求</param>
-        Task<WeChatWorkRobotResponse> SendAsync<TMessageRequest>(string appId, TMessageRequest request)
+        /// <param name="cancellationToken">取消令牌</param>
+        Task<WeChatWorkRobotResponse> SendAsync<TMessageRequest>(string appId, TMessageRequest request, CancellationToken cancellationToken = default)
             where TMessageRequest : WeChatWorkRobotRequest;
 
         /// <summary>
@@ -31,6 +33,7 @@ namespace Bing.WeChatWork.Robots
         /// </summary>
         /// <param name="appId">企业微信机器人密钥</param>
         /// <param name="file">文件路径</param>
-        Task<WeChatWorkRobotUploadResponse> UploadAsync(string appId, string file);
+        /// <param name="cancellationToken">取消令牌</param>
+        Task<WeChatWorkRobotUploadResponse> UploadAsync(string appId, string file, CancellationToken cancellationToken = default);
     }
 }

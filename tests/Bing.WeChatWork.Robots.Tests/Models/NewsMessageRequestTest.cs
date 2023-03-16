@@ -1,12 +1,18 @@
 ﻿using Bing.WeChatWork.Robots.Models;
+using Microsoft.Extensions.Logging;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Bing.WeChatWork.Robots.Tests.Models
 {
-    public class NewsMessageRequestTest:MessageRequestTest
+    /// <summary>
+    /// 图文消息测试
+    /// </summary>
+    public class NewsMessageRequestTest : MessageRequestTest
     {
-        public NewsMessageRequestTest(ITestOutputHelper output) : base(output)
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        public NewsMessageRequestTest(ILoggerFactory loggerFactory) : base(loggerFactory)
         {
         }
 

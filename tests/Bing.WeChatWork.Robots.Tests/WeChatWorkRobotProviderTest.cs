@@ -3,15 +3,22 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Bing.WeChatWork.Robots.Models;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using WebApiClient;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Bing.WeChatWork.Robots.Tests
 {
-    public class WeChatWorkRobotProviderTest : TestBase
+    /// <summary>
+    /// 企业微信机器人 测试
+    /// </summary>
+    public class WeChatWorkRobotProviderTest
     {
+        /// <summary>
+        /// 日志
+        /// </summary>
+        protected ILogger<WeChatWorkRobotProviderTest> Logger { get; }
+
         /// <summary>
         /// 提供程序
         /// </summary>
@@ -28,34 +35,14 @@ namespace Bing.WeChatWork.Robots.Tests
         protected string CurrentDir { get; }
 
         /// <summary>
-        /// 是否已初始化
-        /// </summary>
-        private static bool _isInit = false;
-
-        /// <summary>
         /// 初始化一个<see cref="WeChatWorkRobotProviderTest"/>类型的实例
         /// </summary>
-        public WeChatWorkRobotProviderTest(ITestOutputHelper output) : base(output)
+        public WeChatWorkRobotProviderTest(ILogger<WeChatWorkRobotProviderTest> logger, IWeChatWorkRobotProvider provider)
         {
-            Init();
-            var api = HttpApi.Resolve<IWeChatWorkRobotApi>();
-            Provider = new WeChatWorkRobotProvider(api);
+            Provider = provider;
+            Logger = logger;
             AppId = "";
             CurrentDir = Environment.CurrentDirectory;
-        }
-
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        private void Init()
-        {
-            if(_isInit)
-                return;
-            HttpApi.Register<IWeChatWorkRobotApi>().ConfigureHttpApiConfig(c =>
-            {
-                c.FormatOptions.IgnoreNullProperty = true;
-            });
-            _isInit = true;
         }
 
         /// <summary>
@@ -136,13 +123,13 @@ namespace Bing.WeChatWork.Robots.Tests
         {
             try
             {
-                FileStream file = new FileStream(fileName, FileMode.Open);
+                var file = new FileStream(fileName, FileMode.Open);
                 System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
-                byte[] retVal = md5.ComputeHash(file);
+                var retVal = md5.ComputeHash(file);
                 file.Close();
 
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < retVal.Length; i++)
+                var sb = new StringBuilder();
+                for (var i = 0; i < retVal.Length; i++)
                 {
                     sb.Append(retVal[i].ToString("x2"));
                 }
@@ -195,9 +182,9 @@ namespace Bing.WeChatWork.Robots.Tests
         /// </summary>
         protected void OutputRequest<TRequest>(TRequest request) where TRequest : WeChatWorkRobotRequest
         {
-            Output.WriteLine("--------------------------- Request ---------------------------");
+            Logger.LogDebug("--------------------------- Request ---------------------------");
             var json = JsonConvert.SerializeObject(request.ToRequestBody());
-            Output.WriteLine(json);
+            Logger.LogDebug(json);
         }
 
         /// <summary>
@@ -205,9 +192,9 @@ namespace Bing.WeChatWork.Robots.Tests
         /// </summary>
         protected void OutputResponse<TResponse>(TResponse response) where TResponse : WeChatWorkRobotResponse
         {
-            Output.WriteLine("--------------------------- Response ---------------------------");
+            Logger.LogDebug("--------------------------- Response ---------------------------");
             var json = JsonConvert.SerializeObject(response);
-            Output.WriteLine(json);
+            Logger.LogDebug(json);
         }
     }
 }

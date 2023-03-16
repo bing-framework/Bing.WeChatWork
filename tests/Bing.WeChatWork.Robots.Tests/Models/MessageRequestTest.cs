@@ -1,16 +1,31 @@
 ﻿using Bing.WeChatWork.Robots.Models;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Xunit.Abstractions;
 
 namespace Bing.WeChatWork.Robots.Tests.Models
 {
     /// <summary>
     /// 消息请求测试
     /// </summary>
-    public abstract class MessageRequestTest : TestBase
+    public abstract class MessageRequestTest
     {
-        protected MessageRequestTest(ITestOutputHelper output) : base(output)
+        /// <summary>
+        /// 日志工厂
+        /// </summary>
+        protected ILoggerFactory LoggerFactory { get; }
+
+        /// <summary>
+        /// 日志
+        /// </summary>
+        protected ILogger Logger { get; }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        protected MessageRequestTest(ILoggerFactory loggerFactory)
         {
+            LoggerFactory = loggerFactory;
+            Logger = LoggerFactory.CreateLogger(GetType());
         }
 
         /// <summary>
@@ -25,7 +40,7 @@ namespace Bing.WeChatWork.Robots.Tests.Models
         {
             var request = msg.ToRequestBody();
             var json = JsonConvert.SerializeObject(request);
-            Output.WriteLine(json);
+            Logger.LogDebug(json);
         }
     }
 }
