@@ -301,6 +301,11 @@
             获取内容
             </summary>
         </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TemplateCardMessageRequest`1.Validate">
+            <summary>
+            校验
+            </summary>
+        </member>
         <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard">
             <summary>
             模板卡片
@@ -339,6 +344,11 @@
         <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardAction">
             <summary>
             整体卡片的点击跳转事件，text_notice模版卡片中该字段为必填项
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TemplateCard.Validate">
+            <summary>
+            校验
             </summary>
         </member>
         <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardSourceItem">
@@ -576,6 +586,11 @@
             二级普通文本，建议不超过112个字。模版卡片主要内容的一级标题main_title.title和二级普通文本sub_title_text必须有一项填写
             </summary>
         </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TextNoticeTemplateCard.Validate">
+            <summary>
+            校验
+            </summary>
+        </member>
         <member name="T:Bing.WeChatWork.Robots.Models.NewsNoticeTemplateCard">
             <summary>
             图文展示模板卡片
@@ -599,6 +614,11 @@
         <member name="P:Bing.WeChatWork.Robots.Models.NewsNoticeTemplateCard.VerticalContentList">
             <summary>
             卡片二级垂直内容，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过4
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.NewsNoticeTemplateCard.Validate">
+            <summary>
+            校验
             </summary>
         </member>
         <member name="T:Bing.WeChatWork.Robots.Models.TextMessageRequest">
