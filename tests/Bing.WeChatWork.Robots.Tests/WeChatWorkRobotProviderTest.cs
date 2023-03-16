@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -178,6 +179,62 @@ namespace Bing.WeChatWork.Robots.Tests
                 var sendResp = await Provider.SendAsync(AppId, msg);
                 OutputResponse(sendResp);
             }
+        }
+
+        /// <summary>
+        /// 测试 - 发送模板卡片 - 文本通知类型卡片
+        /// </summary>
+        [Fact]
+        public async Task Test_SendTemplateCard_TextNotice_Async()
+        {
+            var msg = new TemplateCardMessageRequest<TextNoticeTemplateCard>();
+            msg.TemplateCard.Source = new TemplateCard.CardSourceItem
+            {
+                IconUrl = "https://wework.qpic.cn/wwpic/252813_jOfDHtcISzuodLa_1629280209/0",
+                Desc = "企业微信",
+            };
+            msg.TemplateCard.MainTitle = new TemplateCard.CardTitleItem
+            {
+                Title = "欢迎使用BING团队", 
+                Desc = "您的好友正在邀请您加入企业微信"
+            };
+            msg.TemplateCard.EmphasisContent = new TemplateCard.CardTitleItem { Title = "100", Desc = "数据含义" };
+            msg.TemplateCard.QuoteArea = new TemplateCard.CardQuoteAreaItem
+            {
+                Type = 1,
+                Url = "https://work.weixin.qq.com/?from=openApi",
+                Title = "引用文本标题",
+                QuoteText = "Jack：企业微信真的很好用~\nBalian：超级好的一款软件！"
+            };
+            msg.TemplateCard.SubTitleText = "下载企业微信还能抢红包！";
+            msg.TemplateCard.HorizontalContentList = new List<TemplateCard.CardContentItem>();
+            msg.TemplateCard.HorizontalContentList.Add(new TemplateCard.CardContentItem
+            {
+                KeyName = "邀请人",
+                Value = "糟老头子"
+            });
+            msg.TemplateCard.HorizontalContentList.Add(new TemplateCard.CardContentItem
+            {
+                KeyName = "企微官网",
+                Value = "点击访问",
+                Type = 1,
+                Url = "https://work.weixin.qq.com/?from=openApi"
+            });
+            msg.TemplateCard.JumpList = new List<TemplateCard.CardJumpItem>();
+            msg.TemplateCard.JumpList.Add(new TemplateCard.CardJumpItem
+            {
+                Type = 1,
+                Url = "https://work.weixin.qq.com/?from=openApi",
+                Title = "企业微信官网"
+            });
+            msg.TemplateCard.CardAction = new TemplateCard.CardActionItem
+            {
+                Type = 1,
+                Url = "https://work.weixin.qq.com/?from=openApi"
+            };
+            OutputRequest(msg);
+            var resp = await Provider.SendAsync(AppId, msg);
+            OutputResponse(resp);
         }
 
         /// <summary>

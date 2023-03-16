@@ -39,6 +39,21 @@
             文件
             </summary>
         </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.TemplateCard">
+            <summary>
+            模板卡片
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.TextNotice">
+            <summary>
+            卡片类型 - 文本通知
+            </summary>
+        </member>
+        <member name="F:Bing.WeChatWork.Robots.Const.NewsNotice">
+            <summary>
+            卡片类型 - 图文通知
+            </summary>
+        </member>
         <member name="F:Bing.WeChatWork.Robots.Const.All">
             <summary>
             全部人
@@ -59,6 +74,14 @@
             <summary>
             企业微信机器人API
             </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotApi.SendAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            发送
+            </summary>
+            <param name="key">企业微信机器人密钥</param>
+            <param name="request">请求正文</param>
+            <param name="cancellationToken">取消令牌</param>
         </member>
         <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotApi.SendAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Threading.CancellationToken)">
             <summary>
@@ -81,6 +104,14 @@
             <summary>
             企业微信机器人提供程序
             </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotProvider.SendAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            发送请求
+            </summary>
+            <param name="appId">企业微信机器人密钥</param>
+            <param name="request">请求</param>
+            <param name="cancellationToken">取消令牌</param>
         </member>
         <member name="M:Bing.WeChatWork.Robots.IWeChatWorkRobotProvider.SendAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Threading.CancellationToken)">
             <summary>
@@ -249,6 +280,326 @@
             <param name="description">描述</param>
             <param name="url">链接</param>
             <param name="picUrl">图片链接</param>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCardMessageRequest`1">
+            <summary>
+            模板卡片消息请求
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCardMessageRequest`1.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCardMessageRequest`1.TemplateCard">
+            <summary>
+            模板卡片
+            </summary>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.TemplateCardMessageRequest`1.GetContent">
+            <summary>
+            获取内容
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard">
+            <summary>
+            模板卡片
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardType">
+            <summary>
+            卡片类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.Source">
+            <summary>
+            卡片来源样式信息，不需要来源样式可不填写。
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.MainTitle">
+            <summary>
+            模板卡片的主要内容，包括一级标题和标题辅助信息。
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.QuoteArea">
+            <summary>
+            引用文献样式，建议不与关键数据共用
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.HorizontalContentList">
+            <summary>
+            二级标题+文本列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过6
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.JumpList">
+            <summary>
+            跳转指引样式的列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过3
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardAction">
+            <summary>
+            整体卡片的点击跳转事件，text_notice模版卡片中该字段为必填项
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardSourceItem">
+            <summary>
+            卡片来源
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardSourceItem.IconUrl">
+            <summary>
+            来源图片的URL
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardSourceItem.Desc">
+            <summary>
+            来源图片的描述，建议不超过13个字
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardSourceItem.DescColor">
+            <summary>
+            来源文字的颜色，目前支持：0（默认）灰色，1 黑色，2 红色，3 绿色
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardTitleItem">
+            <summary>
+            卡片标题
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardTitleItem.Title">
+            <summary>
+            一级标题，建议不超过26个字
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardTitleItem.Desc">
+            <summary>
+            标题辅助信息，建议不超过30个字
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardContentItem">
+            <summary>
+            卡片内容
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardContentItem.Type">
+            <summary>
+            链接类型，0或不填代表是普通文本，1 代表跳转url，2 代表下载附件，3 代表@员工
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardContentItem.KeyName">
+            <summary>
+            二级标题，建议不超过5个字
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardContentItem.Value">
+            <summary>
+            二级文本，如果horizontal_content_list.type是2，该字段代表文件名称（要包含文件类型），建议不超过26个字
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardContentItem.Url">
+            <summary>
+            链接跳转的url，horizontal_content_list.type是1时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardContentItem.MediaId">
+            <summary>
+            附件的media_id，horizontal_content_list.type是2时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardContentItem.UserId">
+            <summary>
+            被@的成员的userid，horizontal_content_list.type是3时必填
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardQuoteAreaItem">
+            <summary>
+            引用文献样式，建议不与关键数据共用
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardQuoteAreaItem.Type">
+            <summary>
+            引用文献样式区域点击事件，0或不填代表没有点击事件，1 代表跳转url，2 代表跳转小程序
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardQuoteAreaItem.Url">
+            <summary>
+            点击跳转的url，quote_area.type是1时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardQuoteAreaItem.AppId">
+            <summary>
+            点击跳转的小程序的appid，quote_area.type是2时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardQuoteAreaItem.PagePath">
+            <summary>
+            点击跳转的小程序的pagepath，quote_area.type是2时选填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardQuoteAreaItem.Title">
+            <summary>
+            引用文献样式的标题
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardQuoteAreaItem.QuoteText">
+            <summary>
+            引用文献样式的引用文案
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardJumpItem">
+            <summary>
+            跳转指引样式的列表，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过3
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardJumpItem.Type">
+            <summary>
+            跳转链接类型，0或不填代表不是链接，1 代表跳转url，2 代表跳转小程序
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardJumpItem.Title">
+            <summary>
+            跳转链接样式的文案内容，建议不超过13个字
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardJumpItem.Url">
+            <summary>
+            跳转链接的url，jump_list.type是1时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardJumpItem.AppId">
+            <summary>
+            跳转链接的小程序的appid，jump_list.type是2时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardJumpItem.PagePath">
+            <summary>
+            跳转链接的小程序的pagepath，jump_list.type是2时选填
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardActionItem">
+            <summary>
+            整体卡片的点击跳转事件，text_notice模版卡片中该字段为必填项
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardActionItem.Type">
+            <summary>
+            卡片跳转类型，1 代表跳转url，2 代表打开小程序。text_notice模版卡片中该字段取值范围为[1,2]
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardActionItem.Url">
+            <summary>
+            跳转事件的url，card_action.type是1时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardActionItem.AppId">
+            <summary>
+            跳转事件的小程序的appid，card_action.type是2时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardActionItem.PagePath">
+            <summary>
+            跳转事件的小程序的pagepath，card_action.type是2时选填
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardImageItem">
+            <summary>
+            卡片图片
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardImageItem.Url">
+            <summary>
+            图片的url
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardImageItem.AspectRatio">
+            <summary>
+            图片的宽高比，宽高比要小于2.25，大于1.3，不填该参数默认1.3
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TemplateCard.CardNewsItem">
+            <summary>
+            卡片图文
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardNewsItem.Type">
+            <summary>
+            左图右文样式区域点击事件，0或不填代表没有点击事件，1 代表跳转url，2 代表跳转小程序
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardNewsItem.Url">
+            <summary>
+            点击跳转的url，image_text_area.type是1时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardNewsItem.AppId">
+            <summary>
+            点击跳转的小程序的appid，必须是与当前应用关联的小程序，image_text_area.type是2时必填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardNewsItem.PagePath">
+            <summary>
+            点击跳转的小程序的pagepath，image_text_area.type是2时选填
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardNewsItem.Title">
+            <summary>
+            左图右文样式的标题
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardNewsItem.Desc">
+            <summary>
+            左图右文样式的描述
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TemplateCard.CardNewsItem.ImageUrl">
+            <summary>
+            左图右文样式的图片url
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.TextNoticeTemplateCard">
+            <summary>
+            文本通知模板卡片
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TextNoticeTemplateCard.CardType">
+            <summary>
+            卡片类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TextNoticeTemplateCard.EmphasisContent">
+            <summary>
+            关键数据样式
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.TextNoticeTemplateCard.SubTitleText">
+            <summary>
+            二级普通文本，建议不超过112个字。模版卡片主要内容的一级标题main_title.title和二级普通文本sub_title_text必须有一项填写
+            </summary>
+        </member>
+        <member name="T:Bing.WeChatWork.Robots.Models.NewsNoticeTemplateCard">
+            <summary>
+            图文展示模板卡片
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsNoticeTemplateCard.CardType">
+            <summary>
+            卡片类型
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsNoticeTemplateCard.CardImage">
+            <summary>
+            图片样式
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsNoticeTemplateCard.ImageTextArea">
+            <summary>
+            左图右文样式
+            </summary>
+        </member>
+        <member name="P:Bing.WeChatWork.Robots.Models.NewsNoticeTemplateCard.VerticalContentList">
+            <summary>
+            卡片二级垂直内容，该字段可为空数组，但有数据的话需确认对应字段是否必填，列表长度不超过4
+            </summary>
         </member>
         <member name="T:Bing.WeChatWork.Robots.Models.TextMessageRequest">
             <summary>
@@ -479,6 +830,14 @@
             初始化一个<see cref="T:Bing.WeChatWork.Robots.WeChatWorkRobotProvider"/>类型的实例
             </summary>
             <param name="api">企业微信机器人API</param>
+        </member>
+        <member name="M:Bing.WeChatWork.Robots.WeChatWorkRobotProvider.SendAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            发送请求
+            </summary>
+            <param name="appId">企业微信机器人密钥</param>
+            <param name="request">请求</param>
+            <param name="cancellationToken">取消令牌</param>
         </member>
         <member name="M:Bing.WeChatWork.Robots.WeChatWorkRobotProvider.SendAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Threading.CancellationToken)">
             <summary>

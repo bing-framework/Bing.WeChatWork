@@ -19,6 +19,11 @@ public class TemplateCardMessageRequest<TCard> : WeChatWorkRobotRequest where TC
     /// </summary>
     [JsonPropertyName("template_card")]
     public TCard TemplateCard { get; set; } = new TCard();
+
+    /// <summary>
+    /// 获取内容
+    /// </summary>
+    protected override object GetContent() => TemplateCard;
 }
 
 /// <summary>
@@ -346,6 +351,7 @@ public class TextNoticeTemplateCard : TemplateCard
     /// <summary>
     /// 卡片类型
     /// </summary>
+    [JsonPropertyName("card_type")]
     public override string CardType => Const.TextNotice;
 
     /// <summary>
@@ -369,6 +375,7 @@ public class NewsNoticeTemplateCard : TemplateCard
     /// <summary>
     /// 卡片类型
     /// </summary>
+    [JsonPropertyName("card_type")]
     public override string CardType => Const.NewsNotice;
 
     /// <summary>
