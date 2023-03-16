@@ -168,13 +168,16 @@ namespace Bing.WeChatWork.Robots.Tests
             var resp = await Provider.UploadAsync(AppId, fileUrl);
             OutputResponse(resp);
 
-            var msg = new FileMessageRequest();
+            if(resp.Success())
+            {
+                var msg = new FileMessageRequest();
 
-            msg.MediaId = resp.MediaId;
+                msg.MediaId = resp.MediaId;
 
-            OutputRequest(msg);
-            var sendResp = await Provider.SendAsync(AppId, msg);
-            OutputResponse(sendResp);
+                OutputRequest(msg);
+                var sendResp = await Provider.SendAsync(AppId, msg);
+                OutputResponse(sendResp);
+            }
         }
 
         /// <summary>
@@ -182,9 +185,9 @@ namespace Bing.WeChatWork.Robots.Tests
         /// </summary>
         protected void OutputRequest<TRequest>(TRequest request) where TRequest : WeChatWorkRobotRequest
         {
-            Logger.LogDebug("--------------------------- Request ---------------------------");
+            Logger.LogInformation("--------------------------- Request ---------------------------");
             var json = JsonConvert.SerializeObject(request.ToRequestBody());
-            Logger.LogDebug(json);
+            Logger.LogInformation(json);
         }
 
         /// <summary>
@@ -194,7 +197,7 @@ namespace Bing.WeChatWork.Robots.Tests
         {
             Logger.LogDebug("--------------------------- Response ---------------------------");
             var json = JsonConvert.SerializeObject(response);
-            Logger.LogDebug(json);
+            Logger.LogInformation(json);
         }
     }
 }

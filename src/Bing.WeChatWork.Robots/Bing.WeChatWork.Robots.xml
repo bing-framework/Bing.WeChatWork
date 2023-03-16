@@ -122,6 +122,11 @@
             文件id，通过下文的文件上传接口获取
             </summary>
         </member>
+        <member name="M:Bing.WeChatWork.Robots.Models.FileMessageRequest.GetContent">
+            <summary>
+            获取内容
+            </summary>
+        </member>
         <member name="M:Bing.WeChatWork.Robots.Models.FileMessageRequest.Validate">
             <summary>
             校验

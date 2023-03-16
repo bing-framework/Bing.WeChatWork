@@ -25,7 +25,7 @@ namespace Bing.WeChatWork.Robots.Tests.Models
         protected MessageRequestTest(ILoggerFactory loggerFactory)
         {
             LoggerFactory = loggerFactory;
-            Logger = LoggerFactory.CreateLogger(GetType());
+            Logger = LoggerFactory.CreateLogger(this.GetType());
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Bing.WeChatWork.Robots.Tests.Models
         {
             var request = msg.ToRequestBody();
             var json = JsonConvert.SerializeObject(request);
-            Logger.LogDebug(json);
+            Logger.LogInformation(json);
         }
     }
 }

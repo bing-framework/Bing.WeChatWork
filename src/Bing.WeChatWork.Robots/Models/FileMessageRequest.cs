@@ -21,6 +21,11 @@ namespace Bing.WeChatWork.Robots.Models
         public string MediaId { get; set; }
 
         /// <summary>
+        /// 获取内容
+        /// </summary>
+        protected override object GetContent() => new { media_id = MediaId };
+
+        /// <summary>
         /// 校验
         /// </summary>
         protected override void Validate()
