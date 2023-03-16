@@ -64,8 +64,7 @@ namespace Bing.WeChatWork.Robots.Models
         /// <param name="phone">手机号</param>
         public TextMessageRequest AddPhone(string phone)
         {
-            if (Phones == null)
-                Phones = new List<string>();
+            Phones ??= new List<string>();
             if (Phones.Exists(x => x == phone))
                 return this;
             Phones.Add(phone);

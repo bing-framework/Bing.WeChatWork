@@ -11,7 +11,6 @@ namespace Bing.WeChatWork.Robots.Models
     [DataContract]
     public class NewsMessageRequest : WeChatWorkRobotRequest
     {
-
         /// <summary>
         /// 消息类型
         /// </summary>

@@ -36,6 +36,21 @@
         public const string File = "file";
 
         /// <summary>
+        /// 模板卡片
+        /// </summary>
+        public const string TemplateCard = "template_card";
+
+        /// <summary>
+        /// 卡片类型 - 文本通知
+        /// </summary>
+        public const string TextNotice = "text_notice";
+
+        /// <summary>
+        /// 卡片类型 - 图文通知
+        /// </summary>
+        public const string NewsNotice = "news_notice";
+
+        /// <summary>
         /// 全部人
         /// </summary>
         public const string All = "@all";

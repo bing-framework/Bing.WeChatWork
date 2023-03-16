@@ -29,6 +29,15 @@ namespace Bing.WeChatWork.Robots
         /// <param name="appId">企业微信机器人密钥</param>
         /// <param name="request">请求</param>
         /// <param name="cancellationToken">取消令牌</param>
+        public async Task<WeChatWorkRobotResponse> SendAsync(string appId, string request, CancellationToken cancellationToken = default) =>
+            await _api.SendAsync(appId, request, cancellationToken);
+
+        /// <summary>
+        /// 发送请求
+        /// </summary>
+        /// <param name="appId">企业微信机器人密钥</param>
+        /// <param name="request">请求</param>
+        /// <param name="cancellationToken">取消令牌</param>
         public async Task<WeChatWorkRobotResponse> SendAsync(string appId, IDictionary<string, object> request, CancellationToken cancellationToken = default) => 
             await _api.SendAsync(appId, request, cancellationToken);
 

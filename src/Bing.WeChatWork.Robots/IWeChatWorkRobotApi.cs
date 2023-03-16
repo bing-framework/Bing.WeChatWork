@@ -22,6 +22,15 @@ namespace Bing.WeChatWork.Robots
         /// <param name="request">请求正文</param>
         /// <param name="cancellationToken">取消令牌</param>
         [HttpPost("cgi-bin/webhook/send")]
+        Task<WeChatWorkRobotResponse> SendAsync([PathQuery] string key, [RawJsonContent] string request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 发送
+        /// </summary>
+        /// <param name="key">企业微信机器人密钥</param>
+        /// <param name="request">请求正文</param>
+        /// <param name="cancellationToken">取消令牌</param>
+        [HttpPost("cgi-bin/webhook/send")]
         Task<WeChatWorkRobotResponse> SendAsync([PathQuery] string key, [JsonContent] IDictionary<string, object> request, CancellationToken cancellationToken = default);
 
         /// <summary>
