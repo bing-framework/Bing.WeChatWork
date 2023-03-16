@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -18,12 +19,17 @@ public class TemplateCardMessageRequest<TCard> : WeChatWorkRobotRequest where TC
     /// 模板卡片
     /// </summary>
     [JsonPropertyName("template_card")]
-    public TCard TemplateCard { get; set; } = new TCard();
+    public TCard TemplateCard { get; set; } = new();
 
     /// <summary>
     /// 获取内容
     /// </summary>
     protected override object GetContent() => TemplateCard;
+
+    /// <summary>
+    /// 校验
+    /// </summary>
+    protected override void Validate() => TemplateCard.Validate();
 }
 
 /// <summary>
@@ -71,7 +77,20 @@ public abstract class TemplateCard
     /// 整体卡片的点击跳转事件，text_notice模版卡片中该字段为必填项
     /// </summary>
     [JsonPropertyName("card_action")]
-    public CardActionItem CardAction { get; set; }
+    public CardActionItem CardAction { get; set; } = new();
+
+    /// <summary>
+    /// 校验
+    /// </summary>
+    public virtual void Validate()
+    {
+        if (MainTitle is null)
+            throw new ArgumentNullException(nameof(MainTitle), "main_tile 不能为空");
+        if (HorizontalContentList != null && HorizontalContentList.Count > 6)
+            throw new ArgumentOutOfRangeException(nameof(JumpList), "horizontal_content_list 列表长度不能超过6");
+        if (JumpList != null && JumpList.Count > 3)
+            throw new ArgumentOutOfRangeException(nameof(JumpList), "jump_list 列表长度不能超过3");
+    }
 
     #region 基础组件
 
@@ -365,6 +384,16 @@ public class TextNoticeTemplateCard : TemplateCard
     /// </summary>
     [JsonPropertyName("sub_title_text")]
     public string SubTitleText { get; set; }
+
+    /// <summary>
+    /// 校验
+    /// </summary>
+    public override void Validate()
+    {
+        base.Validate();
+        if (string.IsNullOrWhiteSpace(MainTitle.Title) && string.IsNullOrWhiteSpace(SubTitleText))
+            throw new ArgumentNullException(nameof(SubTitleText), "模版卡片主要内容的一级标题main_title.title和二级普通文本sub_title_text必须有一项填写");
+    }
 }
 
 /// <summary>
@@ -396,4 +425,16 @@ public class NewsNoticeTemplateCard : TemplateCard
     /// </summary>
     [JsonPropertyName("vertical_content_list")]
     public List<CardTitleItem> VerticalContentList { get; set; }
+
+    /// <summary>
+    /// 校验
+    /// </summary>
+    public override void Validate()
+    {
+        base.Validate();
+        if (string.IsNullOrWhiteSpace(MainTitle.Title))
+            throw new ArgumentNullException(nameof(MainTitle.Title), "模版卡片主要内容的一级标题main_title.title不能为空");
+        if (CardImage is null)
+            throw new ArgumentNullException(nameof(CardImage));
+    }
 }

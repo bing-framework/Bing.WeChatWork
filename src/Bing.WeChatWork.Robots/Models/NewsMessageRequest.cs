@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Bing.WeChatWork.Robots.Models
 {
@@ -19,7 +20,8 @@ namespace Bing.WeChatWork.Robots.Models
         /// <summary>
         /// 文章列表
         /// </summary>
-        public List<NewsArticle> Articles { get; set; } = new List<NewsArticle>();
+        [JsonPropertyName("articles")]
+        public List<NewsArticle> Articles { get; set; } = new();
 
         /// <summary>
         /// 获取内容

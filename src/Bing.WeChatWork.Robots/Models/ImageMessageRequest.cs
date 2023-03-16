@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Bing.WeChatWork.Robots.Models
 {
@@ -18,12 +19,14 @@ namespace Bing.WeChatWork.Robots.Models
         /// 图片内容的base64编码
         /// </summary>
         [DataMember(Name = "base64", IsRequired = true)]
+        [JsonPropertyName("base64")]
         public string Base64 { get; set; }
 
         /// <summary>
         /// 图片内容（base64编码前）的md5值
         /// </summary>
         [DataMember(Name = "md5", IsRequired = true)]
+        [JsonPropertyName("md5")]
         public string Md5 { get; set; }
 
         /// <summary>

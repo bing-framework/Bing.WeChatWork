@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Bing.WeChatWork.Robots.Models
 {
@@ -18,6 +19,7 @@ namespace Bing.WeChatWork.Robots.Models
         /// markdown内容，最长不超过4096个字节，必须是utf8编码
         /// </summary>
         [DataMember(Name = "content", IsRequired = true)]
+        [JsonPropertyName("content")]
         public string Content { get; set; }
 
         /// <summary>

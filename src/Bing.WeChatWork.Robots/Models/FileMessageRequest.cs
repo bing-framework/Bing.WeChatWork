@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Bing.WeChatWork.Robots.Models
 {
@@ -18,6 +19,7 @@ namespace Bing.WeChatWork.Robots.Models
         /// 文件id，通过下文的文件上传接口获取
         /// </summary>
         [DataMember(Name = "media_id", IsRequired = true)]
+        [JsonPropertyName("media_id")]
         public string MediaId { get; set; }
 
         /// <summary>
